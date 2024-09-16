@@ -116,3 +116,9 @@ ax.set_ylabel('Precipitación [mm]')
 
 st.pyplot(fig)
 
+st.markdown('''
+----
+# Para visualizar los resultados obtenidos al descargar toda la información de las estaciones, revisar la sección "Selección de estación" en el costado superior izquierdo
+
+''')
+
