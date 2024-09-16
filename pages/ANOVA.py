@@ -118,8 +118,6 @@ with col1:
     AnovaData1 = PrecData1[['I1','I2','I3']]
     AnovaData1 = pd.melt(AnovaData1.reset_index(), id_vars=['index'], value_vars=['I1', 'I2', 'I3'])
     AnovaData1.columns = ['index','Ecuacion','Intensidad']
-    AnovaData1
-    
     model1 = ols('Intensidad ~ C(Ecuacion)', data=AnovaData1).fit()
     anova_table1 = sm.stats.anova_lm(model1, typ=2)
     st.show(anova_table1)
@@ -128,8 +126,6 @@ with col2:
     AnovaData2 = PrecData1[['I1','I2','I3']]
     AnovaData2 = pd.melt(AnovaData2.reset_index(), id_vars=['index'], value_vars=['I1', 'I2', 'I3'])
     AnovaData2.columns = ['index','Ecuacion','Intensidad']
-    AnovaData2
-    
     model2 = ols('Intensidad ~ C(Ecuacion)', data=AnovaData2).fit()
     anova_table2 = sm.stats.anova_lm(model2, typ=2)
     st.show(anova_table2)
