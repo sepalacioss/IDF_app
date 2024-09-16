@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-
+import itertools
 
 df = pd.read_csv("pages/Data_downloaded.csv")
 df['Fecha'] = pd.to_datetime(df['fechaobservacion'])
