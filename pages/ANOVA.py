@@ -3,6 +3,11 @@ import pandas as pd
 import numpy as np
 import itertools
 
+st.markdown('''
+----
+## Resultados para dos estaciones dentro de la misma cuenca
+''')
+
 df = pd.read_csv("pages/Data_downloaded.csv")
 df['Fecha'] = pd.to_datetime(df['fechaobservacion'])
 df.drop(columns='fechaobservacion',inplace=True)
@@ -98,3 +103,31 @@ with col2:
     PrecData2 = pd.DataFrame(list(itertools.chain.from_iterable(DF)))
     
     PrecData2
+st.markdown('''
+----
+## Análisis ANOVA entre estaciones de la misma cuenca
+''')
+
+
+col1,col2 = st.columns(2)
+
+with col1:
+    AnovaData1 = PrecData1[['I1','I2','I3']]
+    AnovaData1 = pd.melt(AnovaData1.reset_index(), id_vars=['index'], value_vars=['I1', 'I2', 'I3'])
+    AnovaData1.columns = ['index','Ecuacion','Intensidad']
+    AnovaData1
+    
+    model1 = ols('Intensidad ~ C(Ecuacion)', data=AnovaData1).fit()
+    anova_table1 = sm.stats.anova_lm(model1, typ=2)
+    print(anova_table1)
+
+with col1:
+    AnovaData2 = PrecData1[['I1','I2','I3']]
+    AnovaData2 = pd.melt(AnovaData2.reset_index(), id_vars=['index'], value_vars=['I1', 'I2', 'I3'])
+    AnovaData2.columns = ['index','Ecuacion','Intensidad']
+    AnovaData2
+    
+    model2 = ols('Intensidad ~ C(Ecuacion)', data=AnovaData2).fit()
+    anova_table2 = sm.stats.anova_lm(model2, typ=2)
+    print(anova_table2)
+    
