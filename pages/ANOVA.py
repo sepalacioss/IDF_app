@@ -123,10 +123,36 @@ with col1:
     anova_table1
 
 with col2:
-    AnovaData2 = PrecData1[['I1','I2','I3']]
+    AnovaData2 = PrecData2[['I1','I2','I3']]
     AnovaData2 = pd.melt(AnovaData2.reset_index(), id_vars=['index'], value_vars=['I1', 'I2', 'I3'])
     AnovaData2.columns = ['index','Ecuacion','Intensidad']
     model2 = ols('Intensidad ~ C(Ecuacion)', data=AnovaData2).fit()
     anova_table2 = sm.stats.anova_lm(model2, typ=2)
     anova_table2
-    
+
+st.markdown('''
+# Interpretación de Resultados de la Tabla ANOVA
+
+Para interpretar los resultados de la tabla ANOVA en el contexto de este proyecto y comparar las intensidades calculadas con tres ecuaciones diferentes (`I1`, `I2`, `I3`), sigamos estos pasos:
+
+## 1. Estructura de los datos:
+- Tienes tres series de intensidades (`I1`, `I2`, `I3`) que fueron calculadas utilizando tres ecuaciones diferentes.
+- Has transformado estos datos de un formato amplio a un formato largo usando la función `pd.melt()`. Esto te permite crear una columna llamada `Ecuacion`, que indica cuál de las ecuaciones fue utilizada para calcular la intensidad en cada fila, y una columna `Intensidad` que contiene los valores correspondientes de las intensidades.
+
+## 2. Modelo ANOVA:
+- El modelo que construiste con `ols('Intensidad ~ C(Ecuacion)', data=AnovaData).fit()` es un ANOVA de un solo factor, donde el factor es `Ecuacion`.
+- Este modelo evalúa si las diferencias en las intensidades (`Intensidad`) calculadas por las tres ecuaciones (`Ecuacion`) son estadísticamente significativas.
+
+## 3. Interpretación de la tabla ANOVA:
+La tabla ANOVA te proporcionará varias métricas, pero las más relevantes son:
+
+- **Sum of Squares (SS):** Indica la variabilidad de los datos que puede ser explicada por las diferencias entre las ecuaciones.
+- **Degrees of Freedom (df):** El número de grados de libertad para el factor y el error residual.
+- **Mean Square (MS):** Es el valor medio de los cuadrados (SS) dividido por los grados de libertad (df).
+- **F-value:** Es la razón entre la variabilidad explicada por el modelo y la variabilidad residual. Un valor F más alto indica que las diferencias entre los grupos (en este caso, ecuaciones) son grandes en comparación con la variabilidad dentro de los grupos.
+- **p-value:** Este es el valor clave para interpretar el resultado. Si el valor de `p` es menor que un umbral común (como 0.05), entonces hay evidencia estadística para rechazar la hipótesis nula, lo que significa que hay una diferencia significativa entre las intensidades calculadas por las diferentes ecuaciones.
+
+## 4. Interpretación final:
+- **Si el p-valor es pequeño (p < 0.05):** Puedes concluir que hay una diferencia significativa entre al menos una de las tres ecuaciones en términos de las intensidades que calculan. Esto significa que no todas las ecuaciones producen resultados similares y al menos una es significativamente diferente de las demás.
+- **Si el p-valor es grande (p > 0.05):** No hay suficiente evidencia para concluir que las ecuaciones producen intensidades significativamente diferentes. Esto sugiere que todas las ecuaciones podrían estar calculando intensidades similares.
+''')
