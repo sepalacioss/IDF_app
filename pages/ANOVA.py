@@ -27,7 +27,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     station1 = st.selectbox(
-        "Seleccione la estacion a visualizar",
+        "Seleccione la 1er estacion a visualizar",
         df["nombreestacion"].unique()
     )
     
@@ -64,7 +64,7 @@ with col1:
 
 with col2:
     station2 = st.selectbox(
-        "Seleccione la estacion a visualizar",
+        "Seleccione la 2da estacion a visualizar",
         df["nombreestacion"].unique()
     )
     
