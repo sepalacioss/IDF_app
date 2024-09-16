@@ -120,7 +120,7 @@ with col1:
     AnovaData1.columns = ['index','Ecuacion','Intensidad']
     model1 = ols('Intensidad ~ C(Ecuacion)', data=AnovaData1).fit()
     anova_table1 = sm.stats.anova_lm(model1, typ=2)
-    st.show(anova_table1)
+    anova_table1
 
 with col2:
     AnovaData2 = PrecData1[['I1','I2','I3']]
@@ -128,5 +128,5 @@ with col2:
     AnovaData2.columns = ['index','Ecuacion','Intensidad']
     model2 = ols('Intensidad ~ C(Ecuacion)', data=AnovaData2).fit()
     anova_table2 = sm.stats.anova_lm(model2, typ=2)
-    st.show(anova_table2)
+    anova_table2
     
