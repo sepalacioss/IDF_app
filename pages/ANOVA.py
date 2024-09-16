@@ -3,6 +3,9 @@ import pandas as pd
 import numpy as np
 import itertools
 
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
+
 st.markdown('''
 ----
 ## Resultados para dos estaciones dentro de la misma cuenca
