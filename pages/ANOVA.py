@@ -130,7 +130,7 @@ with col2:
     anova_table2 = sm.stats.anova_lm(model2, typ=2)
     anova_table2
 
-st.markdown('''
+st.sibedar.markdown('''
 # Interpretación de Resultados de la Tabla ANOVA
 
 Para interpretar los resultados de la tabla ANOVA en el contexto de este proyecto y comparar las intensidades calculadas con tres ecuaciones diferentes (`I1`, `I2`, `I3`), sigamos estos pasos:
@@ -140,8 +140,8 @@ Para interpretar los resultados de la tabla ANOVA en el contexto de este proyect
 - Has transformado estos datos de un formato amplio a un formato largo usando la función `pd.melt()`. Esto te permite crear una columna llamada `Ecuacion`, que indica cuál de las ecuaciones fue utilizada para calcular la intensidad en cada fila, y una columna `Intensidad` que contiene los valores correspondientes de las intensidades.
 
 ## 2. Modelo ANOVA:
-- El modelo que construiste con `ols('Intensidad ~ C(Ecuacion)', data=AnovaData).fit()` es un ANOVA de un solo factor, donde el factor es `Ecuacion`.
-- Este modelo evalúa si las diferencias en las intensidades (`Intensidad`) calculadas por las tres ecuaciones (`Ecuacion`) son estadísticamente significativas.
+- El modelo que se construyó es un ANOVA de un solo factor, donde el factor es la ecuación usada `Ecuacion`.
+- Este modelo evalúa si las diferencias en las intensidades calculadas por las tres ecuaciones (`I1`, `I2`, `I3`) son estadísticamente significativas.
 
 ## 3. Interpretación de la tabla ANOVA:
 La tabla ANOVA te proporcionará varias métricas, pero las más relevantes son:
