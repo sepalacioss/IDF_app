@@ -7,6 +7,11 @@ df = pd.read_csv("pages/Data_downloaded.csv")
 df['Fecha'] = pd.to_datetime(df['fechaobservacion'])
 df.drop(columns='fechaobservacion',inplace=True)
 
+station = st.selectbox(
+    "Seleccione la estacion a visualizar",
+    df["nombreestacion"].unique()
+)
+
 ndf = df.loc[df['nombreestacion'] == station]
 ndf.sort_index(inplace=True)
 prec_diario = ndf.resample('D', on = 'Fecha').sum()
