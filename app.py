@@ -33,7 +33,7 @@ st.markdown('''
     ## Cuenca del río Las Ceibas
     ''')
 
-shp = gpd.read_file('ShapefileCuenca\Cuenca.shp')
+shp = gpd.read_file("ShapefileCuenca/Cuenca.shp")
 map_ = folium.Map(location=[shp.geometry.centroid.y.mean(), shp.geometry.centroid.x.mean()], zoom_start=12)
 folium.GeoJson(shp).add_to(map_)
 st_data = st_folium(map_,width=750)
