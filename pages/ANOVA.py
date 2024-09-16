@@ -142,6 +142,7 @@ st.markdown('''
 col1,col2 = st.columns(2)
 
 with col1:
+    st.markdown(f"### Resultados ANOVA para {station1}")
     AnovaData1 = PrecData1[['I1','I2','I3']]
     AnovaData1 = pd.melt(AnovaData1.reset_index(), id_vars=['index'], value_vars=['I1', 'I2', 'I3'])
     AnovaData1.columns = ['index','Ecuacion','Intensidad']
@@ -150,6 +151,7 @@ with col1:
     anova_table1
 
 with col2:
+    st.markdown(f"### Resultados ANOVA para {station2}")
     AnovaData2 = PrecData2[['I1','I2','I3']]
     AnovaData2 = pd.melt(AnovaData2.reset_index(), id_vars=['index'], value_vars=['I1', 'I2', 'I3'])
     AnovaData2.columns = ['index','Ecuacion','Intensidad']
