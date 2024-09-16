@@ -11,7 +11,7 @@ st.markdown('''
 ## Resultados para dos estaciones dentro de la misma cuenca
 ''')
 
-st.sibebar.markdown('''
+st.sidebar.markdown('''
 # Interpretación de Resultados de la Tabla ANOVA
 
 Para interpretar los resultados de la tabla ANOVA en el contexto de este proyecto y comparar las intensidades calculadas con tres ecuaciones diferentes (`I1`, `I2`, `I3`), sigamos estos pasos:
