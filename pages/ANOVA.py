@@ -26,12 +26,12 @@ def eq4(T, t, M, N, PT, ELEV):
 col1, col2 = st.columns(2)
 
 with col1:
-    station2 = st.selectbox(
+    station1 = st.selectbox(
         "Seleccione la estacion a visualizar",
         df["nombreestacion"].unique()
     )
     
-    ndf = df.loc[df['nombreestacion'] == station]
+    ndf = df.loc[df['nombreestacion'] == station1]
     ndf.sort_index(inplace=True)
     prec_diario = ndf.resample('D', on = 'Fecha').sum()
     
@@ -68,7 +68,7 @@ with col2:
         df["nombreestacion"].unique()
     )
     
-    ndf = df.loc[df['nombreestacion'] == station]
+    ndf = df.loc[df['nombreestacion'] == station2]
     ndf.sort_index(inplace=True)
     prec_diario = ndf.resample('D', on = 'Fecha').sum()
     
